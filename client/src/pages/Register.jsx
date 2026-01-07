@@ -1,8 +1,12 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../contexts/AuthContext'
 import './Auth.css'
 
 const Register = () => {
+  const navigate = useNavigate()
+  const { register, loading, error, clearError } = useAuth()
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -16,22 +20,33 @@ const Register = () => {
       ...formData,
       [e.target.name]: e.target.value
     })
+    // Clear any existing errors when user starts typing
+    if (error) clearError()
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+
     if (formData.password !== formData.confirmPassword) {
       alert('Passwords do not match')
       return
     }
-    // TODO: Implement registration logic
-    console.log('Registration attempt:', formData)
+
+    // Prepare data for API (remove confirmPassword)
+    const { confirmPassword, ...userData } = formData
+
+    const result = await register(userData)
+
+    if (result.success) {
+      navigate('/dashboard')
+    }
   }
 
   return (
     <div className="auth-container">
       <div className="auth-card">
         <h2>Join EduVillage</h2>
+        {error && <div className="error-message">{error}</div>}
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="form-group">
             <label htmlFor="name">Full Name</label>
@@ -98,8 +113,12 @@ const Register = () => {
             />
           </div>
 
-          <button type="submit" className="auth-btn">
-            Register
+          <button
+            type="submit"
+            className="auth-btn"
+            disabled={loading || formData.password !== formData.confirmPassword}
+          >
+            {loading ? 'Registering...' : 'Register'}
           </button>
         </form>
 

@@ -1,8 +1,12 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../contexts/AuthContext'
 import './Auth.css'
 
 const Login = () => {
+  const navigate = useNavigate()
+  const { login, loading, error, clearError } = useAuth()
+
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -13,18 +17,25 @@ const Login = () => {
       ...formData,
       [e.target.name]: e.target.value
     })
+    // Clear any existing errors when user starts typing
+    if (error) clearError()
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // TODO: Implement login logic
-    console.log('Login attempt:', formData)
+
+    const result = await login(formData)
+
+    if (result.success) {
+      navigate('/dashboard')
+    }
   }
 
   return (
     <div className="auth-container">
       <div className="auth-card">
         <h2>Login to EduVillage</h2>
+        {error && <div className="error-message">{error}</div>}
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="form-group">
             <label htmlFor="email">Email</label>
@@ -52,8 +63,12 @@ const Login = () => {
             />
           </div>
 
-          <button type="submit" className="auth-btn">
-            Login
+          <button
+            type="submit"
+            className="auth-btn"
+            disabled={loading}
+          >
+            {loading ? 'Logging in...' : 'Login'}
           </button>
         </form>
 

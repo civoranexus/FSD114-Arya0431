@@ -12,6 +12,7 @@ import connectDB from './config/database.js'
 
 // Import routes
 import healthRoutes from './routes/health.js'
+import authRoutes from './routes/auth.js'
 
 // Create Express app
 const app = express()
@@ -28,6 +29,7 @@ app.use(express.urlencoded({ extended: true })) // Parse URL-encoded bodies
 
 // Routes
 app.use('/api/health', healthRoutes)
+app.use('/api/auth', authRoutes)
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -48,7 +50,7 @@ app.use('*', (req, res) => {
 })
 
 // Start server
-const PORT = process.env.PORT || 5000
+const PORT = 4000
 app.listen(PORT, () => {
   console.log(`🚀 EduVillage server is running on port ${PORT}`)
   console.log(`📱 Frontend URL: http://localhost:3000`)
