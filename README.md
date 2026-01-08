@@ -141,23 +141,43 @@ eduvillage/
 
 ### Running the Application
 
-#### Development Mode
+#### 🚀 Automatic Setup (Recommended)
+Run the entire application with a single command:
+```bash
+npm run run
+```
+or
+```bash
+./run.sh
+```
+
+This script will:
+- ✅ Check MongoDB status and start if needed
+- ✅ Start the backend server (http://localhost:3001)
+- ✅ Start the frontend client (http://localhost:5173)
+- ✅ Provide status updates and PIDs
+
+#### Development Mode (Manual)
 Run both frontend and backend simultaneously:
 ```bash
 npm run dev
 ```
 
 This will start:
-- Frontend server on `http://localhost:3000`
-- Backend API on `http://localhost:5000`
+- Frontend server on `http://localhost:5173`
+- Backend API on `http://localhost:3001`
 
-#### Production Mode
+#### Docker Setup (Alternative)
+If you encounter macOS security issues, use Docker:
 ```bash
-# Build the frontend
-npm run build
+# Build and start all services
+npm run docker:dev
 
-# Start the backend
-npm start
+# View logs
+npm run docker:logs
+
+# Stop services
+npm run docker:down
 ```
 
 #### Individual Services
@@ -167,6 +187,15 @@ npm run client
 
 # Run only the backend
 npm run server
+```
+
+#### Production Mode
+```bash
+# Build the frontend
+npm run build
+
+# Start the backend
+npm start
 ```
 
 ## 🔗 API Endpoints

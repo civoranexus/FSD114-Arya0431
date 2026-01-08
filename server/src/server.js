@@ -5,7 +5,7 @@ import morgan from 'morgan'
 import dotenv from 'dotenv'
 
 // Load environment variables
-dotenv.config()
+dotenv.config({ path: './config.env' })
 
 // Import database connection
 import connectDB from './config/database.js'
@@ -13,6 +13,7 @@ import connectDB from './config/database.js'
 // Import routes
 import healthRoutes from './routes/health.js'
 import authRoutes from './routes/auth.js'
+import courseRoutes from './routes/course.js'
 
 // Create Express app
 const app = express()
@@ -30,6 +31,7 @@ app.use(express.urlencoded({ extended: true })) // Parse URL-encoded bodies
 // Routes
 app.use('/api/health', healthRoutes)
 app.use('/api/auth', authRoutes)
+app.use('/api/courses', courseRoutes)
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -50,10 +52,10 @@ app.use('*', (req, res) => {
 })
 
 // Start server
-const PORT = 4000
-app.listen(PORT, () => {
+const PORT = process.env.PORT || 4000
+app.listen(PORT, '127.0.0.1', () => {
   console.log(`🚀 EduVillage server is running on port ${PORT}`)
-  console.log(`📱 Frontend URL: http://localhost:3000`)
+  console.log(`📱 Frontend URL: http://localhost:5173`)
   console.log(`🔗 API URL: http://localhost:${PORT}/api`)
 })
 

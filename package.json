@@ -12,6 +12,12 @@
     "install-client": "cd client && npm install",
     "install-server": "cd server && npm install",
     "install-all": "npm install && npm run install-client && npm run install-server",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:dev": "npm run docker:build && npm run docker:up",
+    "docker:logs": "docker-compose logs -f",
+    "run": "./run.sh",
     "heroku-postbuild": "npm run build"
   },
   "keywords": [

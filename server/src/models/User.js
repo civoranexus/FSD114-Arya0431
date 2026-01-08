@@ -47,6 +47,10 @@ const userSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Course'
   }],
+  createdCourses: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Course'
+  }],
   isActive: {
     type: Boolean,
     default: true
@@ -94,8 +98,9 @@ userSchema.virtual('profile').get(function() {
     role: this.role,
     avatar: this.avatar,
     bio: this.bio,
-    enrolledCoursesCount: this.enrolledCourses.length,
-    completedCoursesCount: this.completedCourses.length,
+    enrolledCoursesCount: this.enrolledCourses ? this.enrolledCourses.length : 0,
+    completedCoursesCount: this.completedCourses ? this.completedCourses.length : 0,
+    createdCoursesCount: this.createdCourses ? this.createdCourses.length : 0,
     createdAt: this.createdAt
   }
 })
