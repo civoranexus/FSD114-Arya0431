@@ -93,11 +93,30 @@ export const getCourse = async (req, res) => {
       })
     }
 
-    // Check if course is published or if user is the instructor
-    if (course.status !== 'published' && (!req.user || req.user._id.toString() !== course.instructor.toString())) {
-      return res.status(404).json({
+    // Check access permissions
+    const isPublished = course.status === 'published'
+    const isAuthenticated = !!req.user
+
+    // Handle instructor check - course.instructor might be populated (object) or ObjectId
+    let isInstructor = false
+    if (isAuthenticated && req.user) {
+      const instructorId = course.instructor._id || course.instructor // Handle populated vs non-populated
+      isInstructor = req.user._id.toString() === instructorId.toString()
+    }
+
+    const isAdmin = isAuthenticated && req.user && req.user.role === 'admin'
+
+    // Allow access if:
+    // 1. Course is published (anyone can see), OR
+    // 2. User is authenticated AND (is the instructor OR is an admin)
+    if (!isPublished && !(isAuthenticated && (isInstructor || isAdmin))) {
+      // Return 403 for unauthorized access to draft courses, 404 for truly not found
+      const statusCode = isAuthenticated ? 403 : 404
+      const message = isAuthenticated ? 'Access denied. This course is not published.' : 'Course not found'
+
+      return res.status(statusCode).json({
         success: false,
-        message: 'Course not found'
+        message: message
       })
     }
 
@@ -120,7 +139,7 @@ export const getCourse = async (req, res) => {
 export const createCourse = async (req, res) => {
   try {
     // Add instructor to req.body
-    req.body.instructor = req.user.id
+    req.body.instructor = req.user._id
 
     const course = await Course.create(req.body)
 
@@ -131,13 +150,33 @@ export const createCourse = async (req, res) => {
 
     res.status(201).json({
       success: true,
-      data: course
+      data: course,
+      message: 'Course created successfully'
     })
   } catch (error) {
     console.error('Create course error:', error)
+
+    // Handle validation errors
+    if (error.name === 'ValidationError') {
+      const messages = Object.values(error.errors).map(val => val.message)
+      return res.status(400).json({
+        success: false,
+        message: 'Validation failed',
+        errors: messages
+      })
+    }
+
+    // Handle duplicate key errors
+    if (error.code === 11000) {
+      return res.status(400).json({
+        success: false,
+        message: 'Course with this title already exists'
+      })
+    }
+
     res.status(500).json({
       success: false,
-      message: 'Server error'
+      message: 'Server error creating course'
     })
   }
 }

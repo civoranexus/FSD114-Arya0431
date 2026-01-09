@@ -69,6 +69,30 @@ export const courseAPI = {
   getCoursesByInstructor: (instructorId) => api.get(`/courses/instructor/${instructorId}`)
 }
 
+// Lecture API
+export const lectureAPI = {
+  // Get lectures for a course
+  getLectures: (courseId) => api.get(`/lectures/course/${courseId}`),
+
+  // Get single lecture
+  getLecture: (id) => api.get(`/lectures/${id}`),
+
+  // Create lecture (Instructor only)
+  createLecture: (courseId, lectureData) => api.post(`/lectures/course/${courseId}`, lectureData),
+
+  // Update lecture (Instructor only)
+  updateLecture: (id, lectureData) => api.put(`/lectures/${id}`, lectureData),
+
+  // Delete lecture (Instructor only)
+  deleteLecture: (id) => api.delete(`/lectures/${id}`),
+
+  // Get lectures by instructor
+  getLecturesByInstructor: (instructorId) => api.get(`/lectures/instructor/${instructorId}`),
+
+  // Update lecture order (Instructor only)
+  updateLectureOrder: (courseId, lectureOrders) => api.put(`/lectures/course/${courseId}/order`, { lectureOrders })
+}
+
 // Health API
 export const healthAPI = {
   checkHealth: () => api.get('/health'),

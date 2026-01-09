@@ -11,14 +11,14 @@ import {
   unenrollCourse,
   getCategories
 } from '../controllers/courseController.js'
-import { protect, authorize } from '../middleware/auth.js'
+import { protect, authorize, optionalAuth } from '../middleware/auth.js'
 
 const router = express.Router()
 
 // Public routes
 router.get('/categories', getCategories)
 router.get('/', getCourses)
-router.get('/:id', getCourse)
+router.get('/:id', optionalAuth, getCourse)
 
 // Instructor-only routes
 router.post('/', protect, authorize('instructor'), createCourse)

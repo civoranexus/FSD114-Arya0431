@@ -176,15 +176,10 @@ const Courses = () => {
               <div className="courses-grid">
                 {courses.map(course => (
                   <div key={course._id} className="course-card">
-                    <div className="course-image">
+                    <div className="course-thumbnail">
                       <span className="course-category">
                         {getCategoryLabel(course.category)}
                       </span>
-                      {course.price === 0 ? (
-                        <span className="course-price free">Free</span>
-                      ) : (
-                        <span className="course-price">${course.price}</span>
-                      )}
                     </div>
 
                     <div className="course-content">
@@ -192,31 +187,33 @@ const Courses = () => {
                         <Link to={`/courses/${course._id}`}>{course.title}</Link>
                       </h3>
 
-                      <p className="course-description">
-                        {course.description.length > 120
-                          ? `${course.description.substring(0, 120)}...`
-                          : course.description
-                        }
-                      </p>
+                      <div className="instructor-info">
+                        <div className="instructor-avatar">
+                          {course.instructor.avatar ? (
+                            <img src={course.instructor.avatar} alt={course.instructor.name} />
+                          ) : (
+                            <span>{course.instructor.name.charAt(0).toUpperCase()}</span>
+                          )}
+                        </div>
+                        <span className="instructor-name">{course.instructor.name}</span>
+                      </div>
 
                       <div className="course-meta">
-                        <div className="instructor">
-                          <span>By {course.instructor.name}</span>
-                        </div>
                         <div className="course-stats">
-                          <span className="students">
-                            {course.totalStudents} students
-                          </span>
-                          <span className="rating">
-                            ⭐ {course.averageRating || 'N/A'}
-                          </span>
+                          <div className="rating">
+                            <span className="rating-stars">★★★★☆</span>
+                            <span className="rating-score">
+                              {course.averageRating ? course.averageRating : 'N/A'}
+                            </span>
+                          </div>
+                          <div className="students-count">
+                            {course.totalStudents.toLocaleString()} students
+                          </div>
                         </div>
                       </div>
 
                       <div className="course-footer">
-                        <span className={`level ${course.level}`}>
-                          {course.level.charAt(0).toUpperCase() + course.level.slice(1)}
-                        </span>
+                        <span className="level">{course.level}</span>
                         <span className="duration">
                           {course.duration > 0 ? `${course.duration}h` : 'Self-paced'}
                         </span>

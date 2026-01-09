@@ -1,0 +1,398 @@
+.lectures-page {
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    padding: 2rem 0;
+}
+
+.lectures-page .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Course Header */
+.course-header {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.back-to-course {
+    display: inline-block;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    transition: color 0.3s;
+}
+
+.back-to-course:hover {
+    color: #0056b3;
+}
+
+.course-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 0 0 0.5rem 0;
+}
+
+.course-subtitle {
+    color: #6c757d;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+/* Access Control */
+.access-denied {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.access-denied h3 {
+    color: #dc3545;
+    margin-bottom: 1rem;
+}
+
+.access-denied p {
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+}
+
+.enroll-link {
+    display: inline-block;
+    background: #28a745;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.enroll-link:hover {
+    background: #218838;
+}
+
+/* Main Content */
+.lectures-content {
+    display: grid;
+    gap: 2rem;
+}
+
+/* Instructor Actions */
+.instructor-actions {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.upload-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.upload-btn:hover {
+    background: #0056b3;
+}
+
+/* Upload Form */
+.upload-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.upload-form h3 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #495057;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.form-group input.error {
+    border-color: #dc3545;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 0.25rem;
+    color: #6c757d;
+    font-size: 0.875rem;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.form-actions button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form-actions button[type="submit"] {
+    background: #28a745;
+    color: white;
+}
+
+.form-actions button[type="submit"]:hover:not(:disabled) {
+    background: #218838;
+}
+
+.form-actions button[type="button"] {
+    background: #6c757d;
+    color: white;
+}
+
+.form-actions button[type="button"]:hover:not(:disabled) {
+    background: #545b62;
+}
+
+.form-actions button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Lectures List */
+.lectures-list {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.lectures-list h2 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+}
+
+.no-lectures {
+    text-align: center;
+    padding: 3rem;
+    color: #6c757d;
+}
+
+.no-lectures p {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+/* Lectures Grid */
+.lectures-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.lecture-item {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.lecture-item:hover {
+    background: #e9ecef;
+    border-color: #007bff;
+}
+
+.lecture-item.active {
+    background: #e7f3ff;
+    border-color: #007bff;
+}
+
+.lecture-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #007bff;
+    color: white;
+    border-radius: 50%;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.lecture-info {
+    flex: 1;
+}
+
+.lecture-info h3 {
+    margin: 0 0 0.25rem 0;
+    color: #2c3e50;
+    font-size: 1.1rem;
+}
+
+.lecture-info p {
+    margin: 0;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.lecture-play {
+    color: #007bff;
+    font-size: 1.5rem;
+    margin-left: 1rem;
+}
+
+/* Lecture Player */
+.lecture-player {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.lecture-player h3 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+}
+
+.video-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    color: #6c757d;
+    font-size: 1.1rem;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.lecture-video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Loading and Error States */
+.loading,
+.error-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.loading {
+    color: #6c757d;
+    font-size: 1.2rem;
+}
+
+.error-message h2 {
+    color: #dc3545;
+    margin-bottom: 1rem;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.back-link:hover {
+    color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .course-title {
+        font-size: 2rem;
+    }
+
+    .course-header {
+        padding: 1.5rem;
+    }
+
+    .lectures-content {
+        gap: 1rem;
+    }
+
+    .lecture-item {
+        padding: 1rem;
+    }
+
+    .lecture-info h3 {
+        font-size: 1rem;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions button {
+        width: 100%;
+    }
+}
