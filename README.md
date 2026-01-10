@@ -1,133 +1,257 @@
-# 🚀 CivoraX Internship Program 2025-26
+# EduVillage - Online Learning Platform
 
-<p align="center">
-  <img src="https://internship.civoranexus.com/CivoraX.png" alt="CivoraX Logo" width="200"/>
-</p>
+[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
+[![Node.js Version](https://img.shields.io/badge/node-%3E%3D16.0.0-brightgreen)](https://nodejs.org/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-4.4%2B-green)](https://www.mongodb.com/)
 
-<p align="center">
-  <strong>Launch your tech career with real projects, expert mentorship, and industry-recognized certification</strong>
-</p>
+A modern, full-stack online learning platform built with the MERN stack (MongoDB, Express.js, React, Node.js).
 
+## 🚀 Features
 
+- **Modern UI/UX**: Clean, responsive design with React and CSS
+- **User Authentication**: Secure login and registration system
+- **Role-based Access**: Support for students, instructors, and admins
+- **Course Management**: Create, enroll, and track course progress
+- **Dashboard**: Personalized user dashboard with course tracking
+- **API Health Monitoring**: Built-in health check endpoints
+- **Security**: Helmet.js for security headers, CORS support
+- **Scalable Architecture**: Well-organized folder structure
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Duration-5%20Weeks-blue" alt="Duration"/>
-  <img src="https://img.shields.io/badge/Start%20Date-Jan%205%2C%202026-green" alt="Start Date"/>
-  <img src="https://img.shields.io/badge/End%20Date-Feb%208%2C%202026-orange" alt="End Date"/>
-  <img src="https://img.shields.io/badge/Mode-Remote--First-purple" alt="Mode"/>
-</p>
+## 🛠 Tech Stack
 
----
+### Frontend
+- **React 18** - Modern React with hooks
+- **React Router** - Client-side routing
+- **Vite** - Fast build tool and development server
+- **CSS3** - Modern styling with responsive design
 
-## 📊 Program Statistics
+### Backend
+- **Node.js** - JavaScript runtime
+- **Express.js** - Web framework for Node.js
+- **MongoDB** - NoSQL database
+- **Mongoose** - MongoDB object modeling
+- **JWT** - JSON Web Tokens for authentication (future feature)
 
-| Metric | Value |
-|--------|-------|
-| 🎓 Interns Trained | 300+ |
-| 💼 Live Projects | 20 |
-| ⏱️ Program Duration | 5 Weeks |
+### Development Tools
+- **ESLint** - Code linting
+- **Nodemon** - Auto-restart for development
+- **Concurrently** - Run multiple scripts simultaneously
 
----
-
-
-## 📅 Program Details
-
-| Detail | Information |
-|--------|-------------|
-| **Duration** | 5-week intensive program |
-| **Dates** | January 5 - February 8, 2026 |
-| **Format** | Remote-first with live sessions and workshops |
-| **Structure** | Real-time project work with weekly milestones |
-
----
-
-## ✅ Eligibility Criteria
-
-- ✔️ Students from **any year or degree program**
-- ✔️ Recent graduates and **career switchers** welcome
-- ✔️ **Basic programming knowledge** required
-- ✔️ Strong **passion for technology** and learning
-
----
-
-## 🛠️ Technologies You'll Master
-
-| Category | Technologies |
-|----------|-------------|
-| **Frontend** | React, Next.js |
-| **Backend** | Node.js, Python |
-| **Advanced** | AI & Machine Learning |
-| **Infrastructure** | Cloud & DevOps |
-| **Mobile** | Cross-platform Development |
-| **Database** | SQL & NoSQL Systems |
-| **APIs** | RESTful & GraphQL |
-| **Workflow** | Agile & Git |
-
----
-
-## 📋 Application Process
+## 📁 Project Structure
 
 ```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   01. Register  │───▶│  02. Team       │───▶│  03. Receive    │
-│   Online        │    │  Review         │    │  Confirmation   │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
+eduvillage/
+├── client/                          # React frontend
+│   ├── public/
+│   │   └── index.html
+│   ├── src/
+│   │   ├── components/              # Reusable UI components
+│   │   │   ├── Navbar.jsx
+│   │   │   ├── Footer.jsx
+│   │   │   └── *.css
+│   │   ├── pages/                   # Page components
+│   │   │   ├── Home.jsx
+│   │   │   ├── Login.jsx
+│   │   │   ├── Register.jsx
+│   │   │   ├── Dashboard.jsx
+│   │   │   └── *.css
+│   │   ├── App.jsx                  # Main app component
+│   │   ├── main.jsx                 # App entry point
+│   │   └── index.css                # Global styles
+│   ├── package.json
+│   └── vite.config.js
+├── server/                          # Node.js backend
+│   ├── src/
+│   │   ├── config/
+│   │   │   └── database.js          # MongoDB connection
+│   │   ├── controllers/             # Route controllers
+│   │   ├── models/                  # Mongoose models
+│   │   │   └── User.js
+│   │   ├── routes/                  # API routes
+│   │   │   └── health.js
+│   │   ├── middleware/              # Custom middleware
+│   │   ├── utils/                   # Utility functions
+│   │   └── server.js                # Main server file
+│   ├── config.env                   # Environment variables
+│   └── package.json
+├── package.json                     # Root package.json
+└── README.md
 ```
 
-1. **📝 Register Online** - Complete your application form with details and preferences
-2. **🔍 CivoraX Team Review** - Our team reviews your application and qualifications
-3. **✉️ Eligibility Email** - Receive confirmation email if selected
+## 🚀 Getting Started
 
+### Prerequisites
 
+- **Node.js** (v16 or higher)
+- **MongoDB** (local installation or MongoDB Atlas)
+- **npm** or **yarn**
 
+### Installation
 
-## 📞 Contact Information
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/eduvillage.git
+   cd eduvillage
+   ```
 
-| Channel | Details |
-|---------|---------|
-| 📧 **Email** | [contact@civoranexus.com](mailto:contact@civoranexus.com) |
-| 📱 **Phone** | [+91 7350675192](tel:+917350675192) |
-| 📍 **Location** | 422605, Sangamner, Maharashtra, India |
+2. **Install all dependencies**
+   ```bash
+   npm run install-all
+   ```
 
-### 🔗 Social Links
+   Or install manually:
+   ```bash
+   # Install root dependencies
+   npm install
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-CivoraX-blue?style=flat&logo=linkedin)](https://www.linkedin.com/company/civoranexus)
-[![Instagram](https://img.shields.io/badge/Instagram-CivoraX-E4405F?style=flat&logo=instagram)](https://www.instagram.com/civoranexus)
-[![Twitter](https://img.shields.io/badge/Twitter-CivoraX-1DA1F2?style=flat&logo=twitter)](https://twitter.com/civoranexus)
-[![YouTube](https://img.shields.io/badge/YouTube-CivoraX-FF0000?style=flat&logo=youtube)](https://www.youtube.com/@civoranexus)
+   # Install client dependencies
+   npm run install-client
+
+   # Install server dependencies
+   npm run install-server
+   ```
+
+3. **Set up environment variables**
+
+   Copy the environment configuration:
+   ```bash
+   cp server/config.env server/.env
+   ```
+
+   Update the `.env` file with your MongoDB connection string:
+   ```env
+   MONGODB_URI=mongodb://localhost:27017/eduvillage
+   # Or for MongoDB Atlas:
+   # MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/eduvillage?retryWrites=true&w=majority
+   ```
+
+4. **Start MongoDB**
+
+   Make sure MongoDB is running locally:
+   ```bash
+   # On macOS with Homebrew
+   brew services start mongodb/brew/mongodb-community
+
+   # On Linux
+   sudo systemctl start mongod
+
+   # Or use Docker
+   docker run -d -p 27017:27017 --name mongodb mongo:latest
+   ```
+
+### Running the Application
+
+#### 🚀 Automatic Setup (Recommended)
+Run the entire application with a single command:
+```bash
+npm run run
+```
+or
+```bash
+./run.sh
+```
+
+This script will:
+- ✅ Check MongoDB status and start if needed
+- ✅ Start the backend server (http://localhost:3001)
+- ✅ Start the frontend client (http://localhost:5173)
+- ✅ Provide status updates and PIDs
+
+#### Development Mode (Manual)
+Run both frontend and backend simultaneously:
+```bash
+npm run dev
+```
+
+This will start:
+- Frontend server on `http://localhost:5173`
+- Backend API on `http://localhost:3001`
+
+#### Docker Setup (Alternative)
+If you encounter macOS security issues, use Docker:
+```bash
+# Build and start all services
+npm run docker:dev
+
+# View logs
+npm run docker:logs
+
+# Stop services
+npm run docker:down
+```
+
+#### Individual Services
+```bash
+# Run only the frontend
+npm run client
+
+# Run only the backend
+npm run server
+```
+
+#### Production Mode
+```bash
+# Build the frontend
+npm run build
+
+# Start the backend
+npm start
+```
+
+## 🔗 API Endpoints
+
+### Health Check
+- `GET /api/health` - Basic health check with system info
+- `GET /api/health/ping` - Database connectivity check
+
+## 🧪 Testing
+
+```bash
+# Run backend tests
+cd server && npm test
+
+# Check API health
+curl http://localhost:5000/api/health
+```
+
+## 📱 Usage
+
+1. **Home Page**: Landing page with platform overview
+2. **Registration**: Create a new account (student/instructor)
+3. **Login**: Authenticate with existing credentials
+4. **Dashboard**: View enrolled courses and progress (requires authentication)
+
+## 🔒 Security Features
+
+- Helmet.js for security headers
+- CORS configuration
+- Input validation and sanitization
+- Environment-based configuration
+- Secure password handling (future implementation)
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- React documentation and community
+- Express.js framework
+- MongoDB documentation
+- Open source contributors
+
+## 📞 Support
+
+For support, email support@eduvillage.com or create an issue in this repository.
 
 ---
 
-## 🏢 About Civora Nexus
-
-**Civora Nexus Pvt. Ltd.** is a technology company empowering communities through innovative civic and healthcare technology solutions.
-
-### Company Services:
-- 🔄 Digital Transformation for Businesses
-- 🏘️ Smart Community & Enterprise Solutions
-- 💡 Affordable Tech Solutions
-- 📊 Data Analytics & Business Insights
-- 🎓 Innovation & Skill Development
-- 🤖 AI & Automation Solutions
-
----
-
-## 📚 Quick Links
-
-- 🌐 [Official Website](https://civoranexus.com/)
-- 📋 [Internship Portal](https://civoranexus.com/internships)
-- 🔐 [Certificate Verification](https://internship.civoranexus.com)
-- 📄 [Privacy Policy](https://civoranexus.com/privacy-policy)
-- 📜 [Terms of Service](https://civoranexus.com/terms-and-conditions)
-
-
-
-<p align="center">
-  <strong>© 2025 Civora Nexus Pvt. Ltd. All rights reserved.</strong>
-</p>
-
-<p align="center">
-  Made with ❤️ by CivoraX Team
-</p>
-
-
+**Happy Learning! 🎓**

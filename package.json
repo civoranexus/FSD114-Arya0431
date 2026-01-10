@@ -1,0 +1,40 @@
+{
+  "name": "eduvillage",
+  "version": "1.0.0",
+  "description": "EduVillage - Online Learning Platform",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "client": "cd client && npm run dev",
+    "server": "cd server && npm run dev",
+    "start": "cd server && npm start",
+    "build": "cd client && npm run build",
+    "install-client": "cd client && npm install",
+    "install-server": "cd server && npm install",
+    "install-all": "npm install && npm run install-client && npm run install-server",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:dev": "npm run docker:build && npm run docker:up",
+    "docker:logs": "docker-compose logs -f",
+    "run": "./run.sh",
+    "heroku-postbuild": "npm run build"
+  },
+  "keywords": [
+    "education",
+    "learning",
+    "mern",
+    "react",
+    "nodejs",
+    "mongodb"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+}
