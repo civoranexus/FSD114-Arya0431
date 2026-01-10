@@ -6,6 +6,10 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
+import InstructorDashboard from './pages/InstructorDashboard'
+import InstructorCourseCreate from './pages/InstructorCourseCreate'
+import InstructorCourseEdit from './pages/InstructorCourseEdit'
+import InstructorCourseManage from './pages/InstructorCourseManage'
 import Courses from './pages/Courses'
 import CourseDetails from './pages/CourseDetails'
 import Lectures from './pages/Lectures'
@@ -25,6 +29,10 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/instructor/dashboard" element={<InstructorDashboard />} />
+                <Route path="/instructor/course/create" element={<InstructorCourseCreate />} />
+                <Route path="/instructor/courses/:id/manage" element={<InstructorCourseManage />} />
+                <Route path="/instructor/course/:courseId" element={<InstructorCourseEdit />} />
                 <Route path="/courses" element={<Courses />} />
                 <Route path="/courses/:id" element={<CourseDetails />} />
                 <Route path="/courses/:courseId/lectures" element={<Lectures />} />

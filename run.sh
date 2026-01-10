@@ -21,6 +21,7 @@ if [ "$NODE_VERSION" -gt 20 ]; then
 fi
 
 echo "🏗️  Starting backend server..."
+source server/config.env
 cd server && npm start &
 BACKEND_PID=$!
 

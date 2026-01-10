@@ -9,7 +9,7 @@
   width: 100%;
 }
 
-/* Ensure consistent spacing and typography across the app */
+/* Udemy-Style High-Density Design System */
 * {
   box-sizing: border-box;
 }
@@ -21,4 +21,652 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #1a1a1a;
+  background-color: #f8f9fa;
+}
+
+/* Dense Typography Hierarchy */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 0.25em 0;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #1a1a1a;
+}
+
+h1 {
+  font-size: 1.75em;
+}
+
+h2 {
+  font-size: 1.375em;
+}
+
+h3 {
+  font-size: 1.125em;
+}
+
+h4 {
+  font-size: 1em;
+}
+
+h5 {
+  font-size: 0.9em;
+}
+
+h6 {
+  font-size: 0.8em;
+}
+
+p {
+  margin: 0 0 0.75em 0;
+  line-height: 1.5;
+  font-size: 0.9em;
+}
+
+/* Minimal Spacing System */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+.content-section {
+  padding: 1rem 0;
+}
+
+.content-section:first-child {
+  padding-top: 0;
+}
+
+/* Compact Form Elements */
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+  font-size: 0.875em;
+  line-height: 1.4;
+}
+
+input,
+textarea,
+select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  background-color: #ffffff;
+  transition: border-color 0.15s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #5624d0;
+  box-shadow: 0 0 0 3px rgba(86, 36, 208, 0.1);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: all 0.15s ease;
+}
+
+/* Dense Card System */
+.card,
+.course-card,
+.enrollment-card {
+  background: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover,
+.course-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Information-Dense Lists */
+ul,
+ol {
+  margin: 0 0 1rem 0;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.25rem;
+  font-size: 0.875em;
+  line-height: 1.4;
+}
+
+/* Compact Badge System */
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.75em;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+/* Neutral Backgrounds */
+.page-section {
+  background-color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+/* Dense Table/List Styles */
+.table,
+.list {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  font-size: 0.875em;
+}
+
+.list-item {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.list-item:last-child {
+  border-bottom: none;
+}
+
+/* Compact Navigation */
+.nav,
+.navbar,
+.sidebar {
+  font-size: 0.875em;
+}
+
+.nav-item,
+.navbar-link {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875em;
+}
+
+/* Dense Button System */
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.875em;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-primary {
+  background-color: #5624d0;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #4c1da0;
+}
+
+.btn-secondary {
+  background-color: #f8f9fa;
+  color: #1a1a1a;
+  border-color: #e9ecef;
+}
+
+.btn-secondary:hover {
+  background-color: #e9ecef;
+}
+
+/* Comprehensive Responsive Design System */
+
+/* Extra Large Desktops (1200px+) */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1400px;
+  }
+}
+
+/* Large Desktops (1024px - 1199px) */
+@media (max-width: 1199px) and (min-width: 1024px) {
+  .container {
+    max-width: 1100px;
+  }
+
+  h1 {
+    font-size: 1.6em;
+  }
+
+  h2 {
+    font-size: 1.3em;
+  }
+}
+
+/* Medium Devices (Tablets - 768px - 1023px) */
+@media (max-width: 1023px) and (min-width: 768px) {
+  body {
+    font-size: 13px;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .content-section {
+    padding: 0.875rem 0;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.25em;
+  }
+
+  h3 {
+    font-size: 1.1em;
+  }
+
+  h4 {
+    font-size: 0.95em;
+  }
+
+  /* Optimize spacing for tablets */
+  section {
+    margin-bottom: 1.5rem;
+  }
+
+  .btn {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.9em;
+  }
+}
+
+/* Small Devices (Large Phones - 576px - 767px) */
+@media (max-width: 767px) and (min-width: 576px) {
+  body {
+    font-size: 13px;
+  }
+
+  .container {
+    padding: 0 0.875rem;
+  }
+
+  .content-section {
+    padding: 0.75rem 0;
+  }
+
+  h1 {
+    font-size: 1.4em;
+  }
+
+  h2 {
+    font-size: 1.2em;
+  }
+
+  h3 {
+    font-size: 1.05em;
+  }
+
+  h4 {
+    font-size: 0.95em;
+  }
+
+  /* Mobile-optimized spacing */
+  section {
+    margin-bottom: 1.25rem;
+  }
+
+  .btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9em;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Touch-friendly form elements */
+  input,
+  textarea,
+  select {
+    padding: 0.75rem;
+    font-size: 16px;
+    /* Prevents zoom on iOS */
+  }
+
+  button {
+    min-height: 44px;
+    /* iOS touch target minimum */
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Extra Small Devices (Phones - < 576px) */
+@media (max-width: 575px) {
+  body {
+    font-size: 12px;
+  }
+
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  .content-section {
+    padding: 0.625rem 0;
+  }
+
+  h1 {
+    font-size: 1.3em;
+  }
+
+  h2 {
+    font-size: 1.15em;
+  }
+
+  h3 {
+    font-size: 1em;
+  }
+
+  h4 {
+    font-size: 0.9em;
+  }
+
+  h5 {
+    font-size: 0.85em;
+  }
+
+  h6 {
+    font-size: 0.8em;
+  }
+
+  /* Compact spacing for small screens */
+  section {
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 0.875em;
+    line-height: 1.4;
+  }
+
+  /* Full-width buttons on mobile */
+  .btn {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    font-size: 0.95em;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Touch-optimized form elements */
+  input,
+  textarea,
+  select {
+    padding: 0.875rem;
+    font-size: 16px;
+    /* Prevents zoom on iOS */
+    width: 100%;
+  }
+
+  button,
+  .btn {
+    min-height: 48px;
+    /* Larger touch targets on small screens */
+    padding: 0.875rem 1rem;
+  }
+
+  /* Mobile-friendly lists */
+  ul,
+  ol {
+    padding-left: 1.25rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    font-size: 0.875em;
+  }
+
+  /* Compact badges */
+  .badge {
+    padding: 0.25rem 0.625rem;
+    font-size: 0.75em;
+  }
+}
+
+/* Orientation-specific adjustments */
+@media (max-width: 767px) and (orientation: landscape) {
+
+  /* Reduce vertical spacing in landscape mode */
+  section {
+    margin-bottom: 0.75rem;
+  }
+
+  .content-section {
+    padding: 0.5rem 0;
+  }
+
+  /* Adjust font sizes for landscape */
+  h1 {
+    font-size: 1.2em;
+  }
+
+  h2 {
+    font-size: 1.1em;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+
+  /* Ensure crisp borders on high-DPI screens */
+  .card,
+  .course-card,
+  .enrollment-card {
+    border-width: 1px;
+  }
+}
+
+/* Mobile Touch Optimizations */
+@media (hover: none) and (pointer: coarse) {
+
+  /* Remove hover effects on touch devices */
+  .card:hover,
+  .course-card:hover,
+  .btn:hover {
+    transform: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Add active states for touch feedback */
+  .card:active,
+  .course-card:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+
+  .btn:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+  }
+
+  /* Ensure minimum touch targets (44px) */
+  button,
+  .btn,
+  input[type="submit"],
+  input[type="button"] {
+    min-height: 44px;
+  }
+
+  /* Touch-friendly form elements */
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+    /* Prevents zoom on iOS */
+    padding: 0.75rem;
+  }
+
+  /* Optimize link touch targets */
+  a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Touch-friendly navigation */
+  .navbar-link,
+  .category-link {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* iOS Safari specific optimizations */
+@supports (-webkit-touch-callout: none) {
+
+  /* Prevent text selection on interactive elements */
+  button,
+  .btn,
+  .card,
+  .course-card {
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+  }
+
+  /* Fix iOS input zoom */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  textarea {
+    font-size: 16px !important;
+    border-radius: 4px;
+  }
+
+  /* iOS scroll behavior */
+  * {
+    overscroll-behavior: auto;
+  }
+}
+
+/* Android specific optimizations */
+@supports (-webkit-appearance: none) and (not (-webkit-touch-callout: none)) {
+
+  /* Android touch feedback */
+  button,
+  .btn {
+    -webkit-tap-highlight-color: rgba(86, 36, 208, 0.2);
+  }
+
+  /* Android scroll optimization */
+  .lectures-sidebar,
+  .mobile-menu-content {
+    overscroll-behavior: contain;
+  }
+}
+
+/* Prevent horizontal scroll on small screens */
+@media (max-width: 480px) {
+
+  html,
+  body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  /* Fix for iOS Safari bottom bar */
+  .lectures-page,
+  .course-details-page,
+  .courses-page,
+  .home {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Safe area adjustments for notched devices */
+  .navbar {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .mobile-menu-overlay {
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+
+  .card,
+  .course-card,
+  .enrollment-card {
+    border: 2px solid;
+  }
+
+  .btn {
+    border: 2px solid;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Dark mode support (future enhancement) */
+@media (prefers-color-scheme: dark) {
+  /* Placeholder for future dark mode implementation */
+}
+
+/* Print styles */
+@media print {
+  body {
+    font-size: 12px;
+    background: white !important;
+  }
+
+  .navbar,
+  .categories-bar,
+  .enrollment-card,
+  button {
+    display: none !important;
+  }
+
+  .container {
+    max-width: none;
+    padding: 0;
+  }
+
+  .course-card,
+  .card {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
 }

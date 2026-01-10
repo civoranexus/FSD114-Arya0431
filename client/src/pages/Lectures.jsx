@@ -137,19 +137,10 @@ const Lectures = () => {
 
   return (
     <div className="lectures-page">
-      <div className="container">
-        {/* Course Header */}
-        <div className="course-header">
-          <Link to={`/courses/${courseId}`} className="back-to-course">
-            ← Back to Course Details
-          </Link>
-          <h1 className="course-title">{course.title} - Lectures</h1>
-          <p className="course-subtitle">Access your course content and lectures</p>
-        </div>
-
-        {/* Access Check */}
-        {!canAccessLectures() && (
-          <div className="access-denied">
+      {/* Access Check */}
+      {!canAccessLectures() && (
+        <div className="access-denied-overlay">
+          <div className="access-denied-content">
             <h3>Access Restricted</h3>
             <p>You must be enrolled in this course to access the lectures.</p>
             {user?.role === 'student' && (
@@ -157,88 +148,231 @@ const Lectures = () => {
                 Enroll Now
               </Link>
             )}
+            <Link to="/courses" className="back-link">← Back to Courses</Link>
           </div>
-        )}
+        </div>
+      )}
 
-        {canAccessLectures() && (
-          <div className="lectures-content">
-            {/* Instructor Actions */}
-            {canUploadLectures() && (
-              <div className="instructor-actions">
-                <button
-                  className="upload-btn"
-                  onClick={() => setShowUploadForm(!showUploadForm)}
-                >
-                  {showUploadForm ? 'Cancel' : '+ Add Lecture'}
-                </button>
+      {canAccessLectures() && (
+        <>
+          {/* Minimal Header */}
+          <div className="learning-header">
+            <Link to={`/courses/${courseId}`} className="back-link">
+              ← Course Details
+            </Link>
+            <div className="header-content">
+              <div className="course-info">
+                <h1>{course.title}</h1>
+                <div className="course-meta">
+                  <span>{lectures.length} lectures</span>
+                  <span>•</span>
+                  <span>{course.duration > 0 ? `${course.duration}h total` : 'Self-paced'}</span>
+                </div>
               </div>
-            )}
-
-            {/* Upload Form */}
-            {showUploadForm && canUploadLectures() && (
-              <UploadLectureForm
-                onSubmit={handleUploadLecture}
-                onCancel={() => setShowUploadForm(false)}
-                uploading={uploading}
-              />
-            )}
-
-            {/* Lectures List */}
-            <div className="lectures-list">
-              <h2>Course Lectures ({lectures.length})</h2>
-
-              {lectures.length === 0 ? (
-                <div className="no-lectures">
-                  <p>No lectures available yet.</p>
-                  {canUploadLectures() && (
-                    <p>Click "Add Lecture" to upload your first lecture.</p>
-                  )}
+              <div className="progress-indicator">
+                <span className="progress-text">0% complete</span>
+                <div className="progress-bar">
+                  <div className="progress-fill" style={{ width: '0%' }}></div>
                 </div>
-              ) : (
-                <div className="lectures-grid">
-                  {lectures.map((lecture, index) => (
-                    <div
-                      key={lecture._id}
-                      className={`lecture-item ${currentLecture?._id === lecture._id ? 'active' : ''}`}
-                      onClick={() => handleLectureClick(lecture)}
-                    >
-                      <div className="lecture-number">{index + 1}</div>
-                      <div className="lecture-info">
-                        <h3>{lecture.title}</h3>
-                        <p>Added {new Date(lecture.createdAt).toLocaleDateString()}</p>
-                      </div>
-                      <div className="lecture-play">
-                        <span>▶</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
+              </div>
             </div>
+          </div>
 
-            {/* Video Player */}
-            {currentLecture && (
-              <div className="lecture-player">
-                <h3>{currentLecture.title}</h3>
+          {/* Video Player Section */}
+          <div className="video-section">
+            {currentLecture ? (
+              <div className="video-player-container">
+                <div className="video-info">
+                  <h2>{currentLecture.title}</h2>
+                  <div className="lecture-meta">
+                    <span>Lecture {lectures.findIndex(l => l._id === currentLecture._id) + 1} of {lectures.length}</span>
+                  </div>
+                </div>
                 {lectureLoading ? (
-                  <div className="video-loading">Loading video...</div>
+                  <div className="video-loading">
+                    <div className="loading-spinner"></div>
+                    <p>Loading video...</p>
+                  </div>
                 ) : (
-                  <div className="video-container">
+                  <div className="video-wrapper">
                     <video
                       controls
                       className="lecture-video"
                       src={currentLecture.videoUrl}
                       preload="metadata"
+                      poster="/api/placeholder/800/450"
                     >
                       Your browser does not support the video tag.
                     </video>
                   </div>
                 )}
               </div>
+            ) : (
+              <div className="video-placeholder">
+                <div className="placeholder-content">
+                  <div className="play-icon-large">▶</div>
+                  <h3>Select a lecture to start watching</h3>
+                  <p>Choose from {lectures.length} lectures available in this course</p>
+                </div>
+              </div>
             )}
           </div>
-        )}
-      </div>
+
+          {/* Enhanced Lectures Sidebar */}
+          <div className="lectures-sidebar">
+            {/* Course Progress */}
+            <div className="course-progress">
+              <div className="progress-header">
+                <h3>Your progress</h3>
+                <span className="progress-percentage">0% complete</span>
+              </div>
+              <div className="progress-bar">
+                <div className="progress-fill" style={{ width: '0%' }}></div>
+              </div>
+              <p className="progress-text">0 of {lectures.length} lectures completed</p>
+            </div>
+
+            {/* Course Navigation */}
+            <div className="course-navigation">
+              <div className="nav-header">
+                <h2>Course content</h2>
+                <span className="lecture-count">{lectures.length} lectures</span>
+              </div>
+
+              {/* Curriculum Sections */}
+              <div className="curriculum-sections">
+                <div className="section-block">
+                  <div className="section-header">
+                    <h4>Section 1: Getting Started</h4>
+                    <span className="section-meta">2 lectures • 30min</span>
+                  </div>
+                  <div className="section-lectures">
+                    {lectures.slice(0, 2).map((lecture, index) => (
+                      <div
+                        key={lecture._id}
+                        className={`lecture-nav-item ${currentLecture?._id === lecture._id ? 'active' : ''} ${index === 0 ? 'completed' : ''}`}
+                        onClick={() => handleLectureClick(lecture)}
+                      >
+                        <div className="lecture-status">
+                          {index === 0 ? '✓' : '○'}
+                        </div>
+                        <div className="lecture-content">
+                          <h5>{lecture.title}</h5>
+                          <span className="lecture-duration">10:30</span>
+                        </div>
+                        <div className="lecture-play">
+                          {currentLecture?._id === lecture._id ? '▶' : ''}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="section-block">
+                  <div className="section-header">
+                    <h4>Section 2: Core Concepts</h4>
+                    <span className="section-meta">3 lectures • 2h 15min</span>
+                  </div>
+                  <div className="section-lectures">
+                    {lectures.slice(2, 5).map((lecture, index) => (
+                      <div
+                        key={lecture._id}
+                        className={`lecture-nav-item ${currentLecture?._id === lecture._id ? 'active' : ''}`}
+                        onClick={() => handleLectureClick(lecture)}
+                      >
+                        <div className="lecture-status">○</div>
+                        <div className="lecture-content">
+                          <h5>{lecture.title}</h5>
+                          <span className="lecture-duration">25:45</span>
+                        </div>
+                        <div className="lecture-play">
+                          {currentLecture?._id === lecture._id ? '▶' : ''}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Show remaining lectures */}
+                {lectures.length > 5 && (
+                  <div className="section-block">
+                    <div className="section-header">
+                      <h4>Section 3: Advanced Topics</h4>
+                      <span className="section-meta">{lectures.length - 5} lectures • 1h 45min</span>
+                    </div>
+                    <div className="section-lectures">
+                      {lectures.slice(5).map((lecture, index) => (
+                        <div
+                          key={lecture._id}
+                          className={`lecture-nav-item ${currentLecture?._id === lecture._id ? 'active' : ''}`}
+                          onClick={() => handleLectureClick(lecture)}
+                        >
+                          <div className="lecture-status">○</div>
+                          <div className="lecture-content">
+                            <h5>{lecture.title}</h5>
+                            <span className="lecture-duration">15:20</span>
+                          </div>
+                          <div className="lecture-play">
+                            {currentLecture?._id === lecture._id ? '▶' : ''}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Show all lectures if less than 5 */}
+                {lectures.length <= 5 && lectures.length > 2 && (
+                  <div className="section-block">
+                    <div className="section-header">
+                      <h4>Section 3: Advanced Topics</h4>
+                      <span className="section-meta">{lectures.length - 2} lectures • 45min</span>
+                    </div>
+                    <div className="section-lectures">
+                      {lectures.slice(2).map((lecture, index) => (
+                        <div
+                          key={lecture._id}
+                          className={`lecture-nav-item ${currentLecture?._id === lecture._id ? 'active' : ''}`}
+                          onClick={() => handleLectureClick(lecture)}
+                        >
+                          <div className="lecture-status">○</div>
+                          <div className="lecture-content">
+                            <h5>{lecture.title}</h5>
+                            <span className="lecture-duration">15:20</span>
+                          </div>
+                          <div className="lecture-play">
+                            {currentLecture?._id === lecture._id ? '▶' : ''}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Instructor Actions */}
+            {canUploadLectures() && (
+              <div className="instructor-panel">
+                <button
+                  className="upload-btn"
+                  onClick={() => setShowUploadForm(!showUploadForm)}
+                >
+                  {showUploadForm ? 'Cancel Add Lecture' : '+ Add New Lecture'}
+                </button>
+
+                {showUploadForm && (
+                  <UploadLectureForm
+                    onSubmit={handleUploadLecture}
+                    onCancel={() => setShowUploadForm(false)}
+                    uploading={uploading}
+                  />
+                )}
+              </div>
+            )}
+          </div>
+        </>
+      )}
     </div>
   )
 }

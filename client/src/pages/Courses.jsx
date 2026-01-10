@@ -92,11 +92,13 @@ const Courses = () => {
     <div className="courses-page">
       <div className="container">
         <div className="courses-header">
-          <h1>All Courses</h1>
-          <p>Discover and learn from our comprehensive course catalog</p>
+          <div className="header-content">
+            <h1>Courses to get you started</h1>
+            <p>Explore our catalog of courses taught by expert instructors</p>
+          </div>
           {user?.role === 'instructor' && (
             <Link to="/courses/create" className="create-course-btn">
-              Create New Course
+              Create Course
             </Link>
           )}
         </div>
@@ -175,51 +177,37 @@ const Courses = () => {
             ) : (
               <div className="courses-grid">
                 {courses.map(course => (
-                  <div key={course._id} className="course-card">
+                  <Link to={`/courses/${course._id}`} key={course._id} className="course-card">
                     <div className="course-thumbnail">
-                      <span className="course-category">
-                        {getCategoryLabel(course.category)}
-                      </span>
+                      {course.thumbnail ? (
+                        <img src={course.thumbnail} alt={course.title} />
+                      ) : (
+                        <div className="thumbnail-placeholder">
+                          <span>{course.title.charAt(0).toUpperCase()}</span>
+                        </div>
+                      )}
                     </div>
 
                     <div className="course-content">
-                      <h3 className="course-title">
-                        <Link to={`/courses/${course._id}`}>{course.title}</Link>
-                      </h3>
-
-                      <div className="instructor-info">
-                        <div className="instructor-avatar">
-                          {course.instructor.avatar ? (
-                            <img src={course.instructor.avatar} alt={course.instructor.name} />
-                          ) : (
-                            <span>{course.instructor.name.charAt(0).toUpperCase()}</span>
-                          )}
-                        </div>
-                        <span className="instructor-name">{course.instructor.name}</span>
+                      <h3 className="course-title">{course.title}</h3>
+                      <p className="course-instructor">{course.instructor.name}</p>
+                      <div className="course-rating">
+                        <span className="rating-stars">⭐ {course.averageRating || '4.5'}</span>
+                        <span className="rating-count">({course.totalRatings || 0})</span>
                       </div>
-
+                      <div className="course-students">
+                        {course.totalStudents || 0} students
+                      </div>
                       <div className="course-meta">
-                        <div className="course-stats">
-                          <div className="rating">
-                            <span className="rating-stars">★★★★☆</span>
-                            <span className="rating-score">
-                              {course.averageRating ? course.averageRating : 'N/A'}
-                            </span>
-                          </div>
-                          <div className="students-count">
-                            {course.totalStudents.toLocaleString()} students
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="course-footer">
-                        <span className="level">{course.level}</span>
+                        <span className={`level ${course.level}`}>
+                          {course.level?.charAt(0).toUpperCase() + course.level?.slice(1) || 'All Levels'}
+                        </span>
                         <span className="duration">
-                          {course.duration > 0 ? `${course.duration}h` : 'Self-paced'}
+                          {course.duration ? `${course.duration}h` : 'Self-paced'}
                         </span>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             )}

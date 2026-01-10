@@ -176,60 +176,137 @@ const CourseDetails = () => {
         <div className="course-details-layout">
           {/* Main Content */}
           <div className="course-main-content">
+            {/* Course Highlights */}
+            <div className="content-section highlights-section">
+              <div className="course-highlights">
+                <div className="highlight-item">
+                  <span className="highlight-icon">📊</span>
+                  <span>{course.totalStudents || 0} students enrolled</span>
+                </div>
+                <div className="highlight-item">
+                  <span className="highlight-icon">⭐</span>
+                  <span>{course.averageRating || 'N/A'} rating</span>
+                </div>
+                <div className="highlight-item">
+                  <span className="highlight-icon">⏱️</span>
+                  <span>{course.duration || 0} hours of content</span>
+                </div>
+                <div className="highlight-item">
+                  <span className="highlight-icon">📚</span>
+                  <span>{course.totalLectures || 0} lectures</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Course Description */}
             <div className="content-section">
-              <h2>About This Course</h2>
+              <h2>Description</h2>
               <div className="course-description">
                 <p>{course.description}</p>
+                <p>This comprehensive {course.level} course is designed to take you from {course.level === 'beginner' ? 'novice to proficient' : 'intermediate to expert'} in {getCategoryLabel(course.category).toLowerCase()}. You'll learn through practical examples and hands-on projects that prepare you for real-world applications.</p>
               </div>
             </div>
 
+            {/* What You'll Learn */}
             <div className="content-section">
-              <h2>What You'll Learn</h2>
-              <div className="learning-objectives">
-                <p>This course covers comprehensive topics in {getCategoryLabel(course.category).toLowerCase()}.</p>
-                <p>By the end of this course, you'll have gained valuable skills and knowledge in this field.</p>
-              </div>
-            </div>
-
-            <div className="content-section">
-              <h2>Course Content</h2>
-              <div className="course-content-preview">
-                <div className="content-stats">
-                  <div className="content-stat">
-                    <span className="stat-number">0</span>
-                    <span className="stat-label">lectures</span>
-                  </div>
-                  <div className="content-stat">
-                    <span className="stat-number">{course.duration > 0 ? `${course.duration}h` : 'N/A'}</span>
-                    <span className="stat-label">total length</span>
-                  </div>
+              <h2>What you'll learn</h2>
+              <div className="learning-outcomes">
+                <div className="outcome-item">
+                  <span className="outcome-check">✓</span>
+                  <span>Master {getCategoryLabel(course.category).toLowerCase()} fundamentals</span>
                 </div>
-                <div className="expand-content">
-                  <span>Expand all sections</span>
-                  <span className="expand-icon">▼</span>
+                <div className="outcome-item">
+                  <span className="outcome-check">✓</span>
+                  <span>Build real-world projects and applications</span>
+                </div>
+                <div className="outcome-item">
+                  <span className="outcome-check">✓</span>
+                  <span>Gain industry-relevant skills</span>
+                </div>
+                <div className="outcome-item">
+                  <span className="outcome-check">✓</span>
+                  <span>Earn a certificate upon completion</span>
                 </div>
               </div>
             </div>
 
+            {/* Course Curriculum Accordion */}
+            <div className="content-section">
+              <h2>Course content</h2>
+              <div className="curriculum-header">
+                <span className="curriculum-stats">
+                  {course.totalLectures || 0} lectures • {course.duration || 0} total hours
+                </span>
+                <span className="expand-all">Expand all sections</span>
+              </div>
+              <div className="curriculum-accordion">
+                <div className="curriculum-section">
+                  <div className="section-header">
+                    <div className="section-info">
+                      <h4>Section 1: Getting Started</h4>
+                      <span className="section-duration">2 lectures • 30min</span>
+                    </div>
+                    <button className="expand-btn">▼</button>
+                  </div>
+                  <div className="section-content">
+                    <div className="lecture-item">
+                      <div className="lecture-info">
+                        <span className="lecture-number">1.</span>
+                        <span className="lecture-title">Course Introduction</span>
+                      </div>
+                      <span className="lecture-duration">10:30</span>
+                    </div>
+                    <div className="lecture-item">
+                      <div className="lecture-info">
+                        <span className="lecture-number">2.</span>
+                        <span className="lecture-title">Setting Up Your Environment</span>
+                      </div>
+                      <span className="lecture-duration">20:15</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="curriculum-section">
+                  <div className="section-header">
+                    <div className="section-info">
+                      <h4>Section 2: Core Concepts</h4>
+                      <span className="section-duration">5 lectures • 2h 15min</span>
+                    </div>
+                    <button className="expand-btn">▶</button>
+                  </div>
+                </div>
+                <div className="curriculum-section">
+                  <div className="section-header">
+                    <div className="section-info">
+                      <h4>Section 3: Building Projects</h4>
+                      <span className="section-duration">8 lectures • 3h 45min</span>
+                    </div>
+                    <button className="expand-btn">▶</button>
+                  </div>
+                </div>
+              </div>
+              {(isEnrolled || isCourseInstructor || isCourseAdmin) && (
+                <div className="view-full-curriculum">
+                  <Link to={`/courses/${course._id}/lectures`} className="view-lectures-link">
+                    View full curriculum and start learning
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            {/* Requirements */}
             <div className="content-section">
               <h2>Requirements</h2>
               <ul className="requirements-list">
-                <li>No prior experience required</li>
-                <li>Access to a computer with internet</li>
                 <li>Basic computer skills</li>
+                <li>Internet connection</li>
+                <li>No prior experience needed for beginner level</li>
+                <li>Some programming knowledge recommended for intermediate/advanced</li>
               </ul>
             </div>
 
+            {/* Instructor Profile */}
             <div className="content-section">
-              <h2>Description</h2>
-              <div className="detailed-description">
-                <p>{course.description}</p>
-                <p>This comprehensive course is designed to take you from beginner to proficient in {getCategoryLabel(course.category).toLowerCase()}. You'll learn through hands-on projects and real-world examples.</p>
-              </div>
-            </div>
-
-            <div className="content-section">
-              <h2>Instructor</h2>
+              <h2>Your instructor</h2>
               <div className="instructor-profile">
                 <div className="instructor-header">
                   <div className="instructor-avatar-large">
@@ -241,59 +318,69 @@ const CourseDetails = () => {
                   </div>
                   <div className="instructor-info-large">
                     <h3>{course.instructor.name}</h3>
-                    <p className="instructor-title">Course Instructor</p>
+                    <div className="instructor-meta">
+                      <span className="instructor-rating">⭐ 4.8 Instructor Rating</span>
+                      <span className="instructor-students">📚 50,000+ Students</span>
+                      <span className="instructor-courses">📖 12 Courses</span>
+                    </div>
                   </div>
                 </div>
-                {course.instructor.bio && (
-                  <p className="instructor-bio">{course.instructor.bio}</p>
-                )}
+                <div className="instructor-bio">
+                  <p>{course.instructor.bio || 'Experienced instructor with a passion for teaching and helping students achieve their goals in technology and development.'}</p>
+                  <div className="instructor-stats">
+                    <div className="stat">
+                      <span className="stat-number">12+</span>
+                      <span className="stat-label">Years of experience</span>
+                    </div>
+                    <div className="stat">
+                      <span className="stat-number">50K+</span>
+                      <span className="stat-label">Students taught</span>
+                    </div>
+                    <div className="stat">
+                      <span className="stat-number">4.8</span>
+                      <span className="stat-label">Average rating</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Sidebar */}
+          {/* Sticky Enrollment Sidebar */}
           <div className="course-sidebar">
             <div className="enrollment-card">
-              <div className="course-preview">
-                {course.thumbnail ? (
-                  <img src={course.thumbnail} alt={course.title} className="course-preview-image" />
-                ) : (
-                  <div className="course-preview-placeholder">
-                    <span>{course.title.charAt(0).toUpperCase()}</span>
-                  </div>
-                )}
+              {/* Course Rating Summary */}
+              <div className="course-rating-summary">
+                <div className="rating-display">
+                  <span className="rating-number">{course.averageRating || '4.5'}</span>
+                  <div className="rating-stars">⭐⭐⭐⭐⭐</div>
+                  <span className="rating-count">({course.totalRatings || 0} ratings)</span>
+                </div>
+                <div className="enrollment-count">
+                  <span className="enrollment-number">{course.totalStudents || 0}</span>
+                  <span className="enrollment-label">students enrolled</span>
+                </div>
               </div>
 
-              <div className="enrollment-content">
-                <div className="price-section">
+              {/* Price and Enrollment */}
+              <div className="enrollment-section">
+                <div className="price-display">
                   {course.price === 0 ? (
-                    <div className="price free">Free</div>
+                    <div className="price-free">Free</div>
                   ) : (
-                    <div className="price">${course.price}</div>
+                    <div className="price-amount">${course.price}</div>
                   )}
                 </div>
 
-                {/* Enrollment Button */}
+                {/* Primary CTA */}
                 {user?.role === 'student' ? (
                   isEnrolled ? (
-                    <div className="enrollment-actions">
-                      <div className="enrollment-status">
-                        <span className="enrolled-badge">✓ Enrolled</span>
-                      </div>
-                      <Link to={`/courses/${course._id}/lectures`} className="view-lectures-btn">
-                        📚 View Lectures
-                      </Link>
-                      <button
-                        className="unenroll-btn"
-                        onClick={handleUnenroll}
-                        disabled={enrolling}
-                      >
-                        {enrolling ? 'Processing...' : 'Unenroll'}
-                      </button>
-                    </div>
+                    <Link to={`/courses/${course._id}/lectures`} className="cta-button primary">
+                      Continue Learning
+                    </Link>
                   ) : (
                     <button
-                      className="enroll-btn"
+                      className="cta-button primary"
                       onClick={handleEnroll}
                       disabled={enrolling}
                     >
@@ -302,54 +389,78 @@ const CourseDetails = () => {
                   )
                 ) : user?.role === 'instructor' ? (
                   course.instructor._id === user.id ? (
-                    <div className="instructor-actions">
-                      <Link to={`/courses/${course._id}/lectures`} className="manage-lectures-btn">
-                        📹 Manage Lectures
-                      </Link>
-                      <Link to={`/courses/${course._id}/edit`} className="edit-course-btn">
-                        Edit Course
-                      </Link>
-                    </div>
+                    <Link to={`/courses/${course._id}/lectures`} className="cta-button secondary">
+                      Manage Course
+                    </Link>
                   ) : (
-                    <div className="not-instructor">
-                      <p>Course by another instructor</p>
-                    </div>
+                    <div className="cta-placeholder">Instructor Preview</div>
                   )
                 ) : (
-                  <div className="login-required">
-                    <p><Link to="/login">Login</Link> to enroll</p>
-                  </div>
+                  <Link to="/login" className="cta-button primary">
+                    Login to Enroll
+                  </Link>
                 )}
 
-                <div className="course-features">
-                  <div className="feature">
-                    <span className="feature-icon">📚</span>
-                    <span>Full lifetime access</span>
-                  </div>
-                  <div className="feature">
-                    <span className="feature-icon">📱</span>
-                    <span>Access on mobile and desktop</span>
-                  </div>
-                  <div className="feature">
-                    <span className="feature-icon">🏆</span>
-                    <span>Certificate of completion</span>
-                  </div>
+                {/* Money Back Guarantee */}
+                <div className="guarantee">
+                  <span className="guarantee-icon">🛡️</span>
+                  <span className="guarantee-text">30-day money-back guarantee</span>
                 </div>
+              </div>
 
-                <div className="course-details-sidebar">
-                  <div className="detail-row">
-                    <span className="detail-label">Level</span>
-                    <span className="detail-value">{course.level.charAt(0).toUpperCase() + course.level.slice(1)}</span>
-                  </div>
-                  <div className="detail-row">
-                    <span className="detail-label">Duration</span>
-                    <span className="detail-value">{course.duration > 0 ? `${course.duration}h` : 'Self-paced'}</span>
-                  </div>
-                  <div className="detail-row">
-                    <span className="detail-label">Language</span>
-                    <span className="detail-value">English</span>
-                  </div>
+              {/* Course Includes */}
+              <div className="course-includes">
+                <h4>This course includes:</h4>
+                <ul className="includes-list">
+                  <li>
+                    <span className="include-icon">📹</span>
+                    <span>{course.duration || 0} hours on-demand video</span>
+                  </li>
+                  <li>
+                    <span className="include-icon">📄</span>
+                    <span>{course.totalLectures || 0} downloadable resources</span>
+                  </li>
+                  <li>
+                    <span className="include-icon">📱</span>
+                    <span>Access on mobile and TV</span>
+                  </li>
+                  <li>
+                    <span className="include-icon">🏆</span>
+                    <span>Certificate of completion</span>
+                  </li>
+                  <li>
+                    <span className="include-icon">♾️</span>
+                    <span>Full lifetime access</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Quick Course Details */}
+              <div className="course-details-summary">
+                <div className="detail-item">
+                  <span className="detail-label">Level</span>
+                  <span className="detail-value">{course.level?.charAt(0).toUpperCase() + course.level?.slice(1) || 'All Levels'}</span>
                 </div>
+                <div className="detail-item">
+                  <span className="detail-label">Duration</span>
+                  <span className="detail-value">{course.duration ? `${course.duration} total hours` : 'Self-paced'}</span>
+                </div>
+                <div className="detail-item">
+                  <span className="detail-label">Language</span>
+                  <span className="detail-value">English</span>
+                </div>
+                <div className="detail-item">
+                  <span className="detail-label">Last updated</span>
+                  <span className="detail-value">{new Date(course.updatedAt || Date.now()).toLocaleDateString()}</span>
+                </div>
+              </div>
+
+              {/* Share Course */}
+              <div className="share-section">
+                <button className="share-button">
+                  <span className="share-icon">📤</span>
+                  <span>Share this course</span>
+                </button>
               </div>
             </div>
           </div>
